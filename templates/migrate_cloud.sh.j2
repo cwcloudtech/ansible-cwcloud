@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+echo "Pulling flyway image"
+docker pull flyway/flyway:7.15.0
+
+POSTGRES_HOST={{ cloud_db_host }}
+POSTGRES_PORT={{ cloud_db_port }}
+DB_NAME={{ cloud_db_name }}
+POSTGRES_USER={{ cloud_db_user }}
+POSTGRES_PASSWORD={{ cloud_db_password }}
+
+date
+echo "Running database migration for ${ENV}"
+docker run -v {{ node_home }}/migrations:/flyway/sql \
+  --rm flyway/flyway:7.15.0 \
+  -mixed=true \
+  -url="jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${DB_NAME}" \
+  -user="${POSTGRES_USER}" \
+  -password="${POSTGRES_PASSWORD}" migrate 
+
+date

@@ -1,0 +1,42 @@
+version: '3.3'
+services:
+  comwork_cloud_ui:
+    restart: always
+    container_name: comwork_cloud_ui
+    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_ui:{{ web_app_image_tag }}
+    env_file: 
+      - .env.webapp
+    networks:
+      - cloud_ui
+    ports:
+      - "5301:80"
+
+  comwork_cloud_api:
+    restart: always
+    container_name: comwork_cloud_api
+    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_api:{{ api_image_tag }}
+    volumes:
+      - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
+    networks:
+      - cloud_api
+    env_file: 
+      - .env.api
+    ports:
+      - "5000:5000"
+  
+  comwork_cloud_cache:
+    image: redis:6.2.6
+    restart: always
+    container_name: comwork_cloud_cache
+    networks:
+      - cloud_api
+    ports:
+      - "5444:6379"
+
+networks:
+  cloud_api:
+    driver: bridge
+  cloud_ui:
+    driver: bridge
+
+

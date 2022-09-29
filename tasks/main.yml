@@ -1,0 +1,42 @@
+
+---
+- name: Create migration dir
+  become: yes
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: "{{ item.mode }}"
+    recurse: "{{ item.recurse }}"
+  with_items:
+    - { path: "{{ node_home }}/migrations", recurse: no, mode: '0755'}
+
+- name: Create comwork-cloud configuration files
+  become: yes
+  template:
+    src: "{{ item }}"
+    dest: "{{ node_home }}/migrations"
+    mode: '0655'
+  with_fileglob:
+      - "../templates/migrations/*"
+
+- name: Create comwork-cloud configuration files
+  become: yes
+  template:
+    src: "{{ item.template }}.j2"
+    dest: "{{ item.path }}/{{ item.template }}"
+    mode: "{{ item.mode }}"
+  with_items:
+    - { template: docker-compose-cloud.yml , path: "{{ node_home }}" , mode: '0644' }
+    - { template: cloud_environments.yml , path: "{{ node_home }}" , mode: '0777' }
+    - { template: deploy_cloud.sh , path: "{{ node_home }}", mode: '0755'  }
+    - { template: .env.api , path: "{{ node_home }}" , mode: '0644' }
+    - { template: .env.webapp , path: "{{ node_home }}" , mode: '0644' }
+    - { template: migrate_cloud.sh , path: "{{ node_home }}" , mode: '0755' }
+
+- name: Data migration
+  become: yes
+  command: "bash {{ node_home }}/migrate_cloud.sh > {{ node_home }}/migrate_cloud.log 2>&1"
+
+- name: Deploy comwork cloud
+  become: yes
+  command: "bash {{ node_home }}/deploy_cloud.sh"

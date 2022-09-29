@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "{{ container_registry.password }}" | docker login -u "{{ container_registry.login }}" "{{ container_registry.url }}" --password-stdin
+
+{% if cloud_force_recreate is defined and cloud_force_recreate %}
+RECREATE_OPT="--force-recreate"
+{% else %}
+RECREATE_OPT=""
+{% endif %}
+
+{% if cloud_force_rebuild is defined and cloud_force_rebuild %}
+REBUILD_OPT="--build"
+{% else %}
+REBUILD_OPT=""
+{% endif %}
+
+COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f {{ node_home }}/docker-compose-cloud.yml up -d ${REBUILD_OPT} ${RECREATE_OPT}

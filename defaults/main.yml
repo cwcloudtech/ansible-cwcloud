@@ -1,0 +1,167 @@
+---
+container_registry:
+  login: changeit # ask to comwork support using Slack #onprem channel
+  password: changeit # ask to comwork support using Slack #onprem channel
+  url: rg.fr-par.scw.cloud/comworkio
+
+web_app_image_tag: main-b5618aeb
+api_image_tag: main-1fc291a5
+
+cloud_force_recreate: true
+cloud_force_rebuild: true
+
+## Environment variables
+cloud_matomo_url: ""
+cloud_matomo_site_id: ""
+
+cloud_db_name: cloud
+cloud_db_user: cloud
+cloud_db_port: 5432
+cloud_db_password: changeit
+cloud_disable_payment_features: true
+cloud_redis_host: comwork_cloud_cache
+cloud_api_url: https://cloud-api.yourdomain.com # changeit
+cloud_api_version: v1
+cloud_doc_url: https://doc.cloud.comwork.io
+company_name: Sobflous
+cloud_pulumi_access_token: changeit
+cloud_pulumi_passphrase: changeit
+cloud_pulumi_backend_url: s3://changeit
+
+cloud_yubico_client_id: changeit
+cloud_yubico_client_secret: changeit
+
+cloud_slack_token: changeit
+cloud_slack_trigger: "off"
+cloud_slack_channel: "#cloud"
+cloud_slack_emoji: ":comworkcloud:"
+cloud_slack_username: "comwork-cloud"
+
+cloud_dynamic_repo_id: changeit
+cloud_gitlab_url: https://gitlab.yourdomain.com # changeit
+cloud_playbook_repo_url: https://gitlab.yourdomain.com/infrastructure/infra-playbook.git # changeit
+cloud_playbook_repo_id: 2
+cloud_git_private_token: changeit
+cloud_sendgrid_api_key: changeit
+cloud_access_key_id: changeit
+cloud_access_key_secret: changeit
+cloud_s3_default_region: sbg
+cloud_region: fr-par
+cloud_email_from: cloud@yourdomain.com # changeit
+cloud_jwt_key: changeit # base64
+cloud_token_ttl: 7200
+cloud_os_url: https://auth.cloud.ovh.net/v3/
+cloud_os_domain_name: default
+cloud_os_username: user-changeit
+cloud_os_password: changeit
+cloud_os_tenant_name: changeit
+cloud_default_provider: ovh
+# to enable if you want to change the logo
+# cloud_external_url: https://url_to_yourlogo/logo.png
+ovh_instance_types: &ovhInstancesTypes
+  - type: d2-2
+    core: 1 X86 64bit
+    ram: 2 GB
+    disk: 25 GB NVMe
+    bandwidth: 100 Mbps
+    localstorage: 0 GB
+    price_variable: PRICE_d2_2
+  - type: d2-4
+    core: 2 X86 64bit
+    ram: 4 GB
+    disk: 50 GB NVMe
+    bandwidth: 250 Mbps
+    localstorage: 0 GB
+    price_variable: PRICE_d2_4
+  - type: d2-8
+    core: 4 X86 64bit
+    ram: 8 GB
+    disk: 50 GB NVMe
+    bandwidth: 500 Mbps
+    localstorage: 0 GB
+    price_variable: PRICE_d2_8
+  - type: b2-15
+    core: 4 X86 64bit
+    ram: 15 GB
+    disk: 100 GB NVMe
+    bandwidth: 250 Mbps
+    localstorage: 0 GB
+    price_variable: PRICE_b2_15
+
+providers:
+  - name: ovh
+    strategy: OpenStackStrategy
+    regions:  
+      - name: UK1
+        zones: ['nova']
+      - name: DE1
+        zones: ['nova']
+      - name: GRA11
+        zones: ['nova']
+      - name: SBG5
+        zones: ['nova']
+      - name: WAW1
+        zones: ['nova']
+      - name: BHS5
+        zones: ['nova']
+    instance_types: ['d2-2', 'd2-4', 'd2-8', 'b2-15']
+    bucket_types: ['public-read','private']
+    bucket_dns: perf.cloud.ovh.net
+    bucket_initial_dns: storage
+    instance_configs:
+      - region: SBG5
+        zones:
+          - name: nova
+            instance_types: *ovhInstancesTypes
+      - region: GRA11
+        zones:
+          - name: nova
+            instance_types: *ovhInstancesTypes
+      - region: UK1
+        zones:
+          - name: nova
+            instance_types: *ovhInstancesTypes
+      - region: DE1
+        zones:
+          - name: nova
+            instance_types: *ovhInstancesTypes
+      - region: WAW1
+        zones:
+          - name: nova
+            instance_types: *ovhInstancesTypes
+      - region: BHS5
+        zones:
+          - name: nova
+            instance_types: *ovhInstancesTypes
+
+dns_zones: []
+
+images:
+  - UK1-nova:  bbc039ad-1b1c-490c-9aef-a13ce802db5f
+  - DE1-nova: 05181328-d576-455d-8111-47195374daf0
+  - BHS5-nova: 7608ec06-8953-4a05-836e-190508fa6464
+  - WAW1-nova: a700cbe9-799c-4fd9-9246-117433c744cf
+  - GRA11-nova: e9e315cd-9760-4982-81ce-79c04cdb2810
+  - SBG5-nova: d357b913-e2a6-4b7e-9dac-0acd0d4acf5b
+
+environments:
+  - environment: code
+    extra_subdomains: []
+  - environment: faasd
+    extra_subdomains: []
+  - environment: lt
+    extra_subdomains: ["*"]
+  - environment: pgsql
+    extra_subdomains: ["imalive"]
+  - environment: mariadb
+    extra_subdomains: ["imalive"]
+  - environment: portainer
+    extra_subdomains: []
+  - environment: wpaas
+    extra_subdomains: []
+  - environment: matomo
+    extra_subdomains: []
+  - environment: vps
+    extra_subdomains: ["imalive"]
+  - environment: elasticstack
+    extra_subdomains: ["api", "imalive"]

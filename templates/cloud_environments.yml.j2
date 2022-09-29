@@ -1,0 +1,89 @@
+name: cloud environments configuration
+description: cloud environments configuration
+
+
+{% if providers|length > 0 %}
+providers: 
+{% for provider in providers %}
+  - name: {{provider["name"]}}
+    strategy: {{provider["strategy"]}}
+{% if provider["regions"]|length > 0 %}
+    regions:
+{% for region in provider["regions"] %}
+     - name: {{region["name"]}} 
+       zones: {{region["zones"]}}
+{% endfor %}
+{% else %}
+    regions: []
+{% endif %}
+    instance_types: {{provider["instance_types"]}}
+    bucket_types: {{provider["bucket_types"]}}
+    bucket_dns: {{provider["bucket_dns"]}}
+    bucket_initial_dns: {{provider["bucket_initial_dns"]}}
+    strategy: {{provider["strategy"]}}
+{% if provider["instance_configs"]|length > 0 %}
+    instance_configs:
+{% for instance_config in provider["instance_configs"] %}
+     - region: {{instance_config["region"]}}
+{% if instance_config["zones"]|length > 0 %}
+       zones:
+{% for zone in instance_config["zones"] %}
+         - name: {{zone["name"]}}
+{% if zone["instance_types"]|length > 0 %}
+           instance_types:
+{% for instance_type in zone["instance_types"] %}
+           - type: {{instance_type["type"]}}
+             core: {{instance_type["core"]}}
+             ram: {{instance_type["ram"]}}
+             disk: {{instance_type["disk"]}}
+             bandwidth: {{instance_type["bandwidth"]}}
+             localstorage: {{instance_type["localstorage"]}}
+             price_variable: {{instance_type["price_variable"]}}
+{% endfor %}
+{% else %}
+           instance_types: []
+{% endif %}
+{% endfor %}
+{% else %}
+       zones: []
+{% endif %}
+
+{% endfor %}
+{% else %}
+    instance_configs: []
+{% endif %}
+{% endfor %}
+{% else %}
+providers: []
+{% endif %}
+
+{% if dns_zones|length > 0 %}
+dns_zones: 
+{% for zone in dns_zones %}
+ - {{zone}}
+{% endfor %}
+{% else %}
+dns_zones: []
+{% endif %}
+
+{% if images|length > 0 %}
+images: 
+{% for image in images %}
+{%- for key,value in image.items() %}
+   - {{key}}: {{value}}
+{%- endfor %}
+
+{% endfor %}
+{% else %}
+images: []
+{% endif %}
+
+{% if environments|length > 0 %}
+environments: 
+{% for environment in environments %}
+  - environment: {{environment["environment"]}}
+    extra_subdomains: {{environment["extra_subdomains"]}}
+{% endfor %}
+{% else %}
+environments: []
+{% endif %}
