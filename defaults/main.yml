@@ -4,8 +4,9 @@ container_registry:
   password: changeit # ask to comwork support using Slack #onprem channel
   url: rg.fr-par.scw.cloud/comworkio
 
-web_app_image_tag: main-b5618aeb
-api_image_tag: main-1fc291a5
+web_app_image_tag: main-ac24c52b
+api_image_tag: main-022aa36e
+
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
@@ -13,7 +14,8 @@ cloud_force_rebuild: true
 ## Environment variables
 cloud_matomo_url: ""
 cloud_matomo_site_id: ""
-
+cloud_git_username: changeit
+cloud_git_email: changeit
 cloud_db_name: cloud
 cloud_db_user: cloud
 cloud_db_port: 5432
@@ -41,6 +43,7 @@ cloud_dynamic_repo_id: changeit
 cloud_gitlab_url: https://gitlab.yourdomain.com # changeit
 cloud_playbook_repo_url: https://gitlab.yourdomain.com/infrastructure/infra-playbook.git # changeit
 cloud_playbook_repo_id: 2
+gitlab_projectid_issues: 2
 cloud_git_private_token: changeit
 cloud_sendgrid_api_key: changeit
 cloud_access_key_id: changeit
@@ -55,7 +58,15 @@ cloud_os_domain_name: default
 cloud_os_username: user-changeit
 cloud_os_password: changeit
 cloud_os_tenant_name: changeit
+cloud_ovh_endpoint: ovh-eu
+cloud_ovh_application_key: changeit
+cloud_ovh_application_secret: changeit
+cloud_ovh_consumer_key: changeit
+cloud_ovh_servicename: changeit
 cloud_default_provider: ovh
+cloud_scw_project_id: changeit
+cloud_scw_access_key: changeit
+cloud_scw_secret_key: changeit
 # to enable if you want to change the logo
 # cloud_external_url: https://url_to_yourlogo/logo.png
 ovh_instance_types: &ovhInstancesTypes

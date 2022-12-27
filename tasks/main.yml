@@ -10,9 +10,9 @@
   with_items:
     - { path: "{{ node_home }}/migrations", recurse: no, mode: '0755'}
 
-- name: Create comwork-cloud configuration files
+- name: Create comwork-cloud migrations files
   become: yes
-  template:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ node_home }}/migrations"
     mode: '0655'
