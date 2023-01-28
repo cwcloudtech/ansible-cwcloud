@@ -16,6 +16,6 @@ docker run -v {{ node_home }}/migrations:/flyway/sql \
   -mixed=true \
   -url="jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${DB_NAME}" \
   -user="${POSTGRES_USER}" \
-  -password="${POSTGRES_PASSWORD}" migrate 
+  -password="${POSTGRES_PASSWORD}" migrate -ignoreIgnoredMigrations=true
 
 date

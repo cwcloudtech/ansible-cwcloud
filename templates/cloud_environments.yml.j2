@@ -1,6 +1,12 @@
 name: cloud environments configuration
 description: cloud environments configuration
 
+{% if gitlab_public_instances|length > 0 %}
+gitlab_public_instances:
+{% for p_instance in gitlab_public_instances %}
+  - {{ p_instance }}
+{% endfor %}
+{% endif %}
 
 {% if providers|length > 0 %}
 providers: 
@@ -18,8 +24,9 @@ providers:
 {% endif %}
     instance_types: {{provider["instance_types"]}}
     bucket_types: {{provider["bucket_types"]}}
-    bucket_dns: {{provider["bucket_dns"]}}
-    bucket_initial_dns: {{provider["bucket_initial_dns"]}}
+    bucket_available_regions: {{provider["bucket_available_regions"]}}
+    registry_types: {{provider["registry_types"]}}
+    registry_available_regions: {{provider["registry_available_regions"]}}
     strategy: {{provider["strategy"]}}
 {% if provider["instance_configs"]|length > 0 %}
     instance_configs:
@@ -60,7 +67,8 @@ providers: []
 {% if dns_zones|length > 0 %}
 dns_zones: 
 {% for zone in dns_zones %}
- - {{zone}}
+ - name: {{ zone["name"] }}
+   strategy: {{ zone["strategy"] }}
 {% endfor %}
 {% else %}
 dns_zones: []
@@ -76,14 +84,4 @@ images:
 {% endfor %}
 {% else %}
 images: []
-{% endif %}
-
-{% if environments|length > 0 %}
-environments: 
-{% for environment in environments %}
-  - environment: {{environment["environment"]}}
-    extra_subdomains: {{environment["extra_subdomains"]}}
-{% endfor %}
-{% else %}
-environments: []
 {% endif %}

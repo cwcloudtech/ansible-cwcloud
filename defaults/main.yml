@@ -4,9 +4,12 @@ container_registry:
   password: changeit # ask to comwork support using Slack #onprem channel
   url: rg.fr-par.scw.cloud/comworkio
 
-web_app_image_tag: main-ac24c52b
-api_image_tag: main-022aa36e
+gitlab_public_instances:
+  - https://gitlab.com
+  - https://lab.frogg.it
 
+web_app_image_tag: main-6544eadb
+api_image_tag: main-81f0204b
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
