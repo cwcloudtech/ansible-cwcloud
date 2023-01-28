@@ -25,10 +25,10 @@ cloud_db_port: 5432
 cloud_db_password: changeit
 cloud_disable_payment_features: true
 cloud_redis_host: comwork_cloud_cache
-cloud_api_url: https://cloud-api.yourdomain.com # changeit
+cloud_api_url: https://cloud-api.changeit.com # changeit
 cloud_api_version: v1
 cloud_doc_url: https://doc.cloud.comwork.io
-company_name: Sobflous
+company_name: changeit
 cloud_pulumi_access_token: changeit
 cloud_pulumi_passphrase: changeit
 cloud_pulumi_backend_url: s3://changeit
@@ -70,8 +70,10 @@ cloud_default_provider: ovh
 cloud_scw_project_id: changeit
 cloud_scw_access_key: changeit
 cloud_scw_secret_key: changeit
+
 # to enable if you want to change the logo
 # cloud_external_url: https://url_to_yourlogo/logo.png
+
 ovh_instance_types: &ovhInstancesTypes
   - type: d2-2
     core: 1 X86 64bit
@@ -104,15 +106,15 @@ ovh_instance_types: &ovhInstancesTypes
 
 providers:
   - name: ovh
-    strategy: OpenStackStrategy
-    regions:  
-      - name: UK1
-        zones: ['nova']
-      - name: DE1
-        zones: ['nova']
+    strategy: OvhStrategry
+    regions:
       - name: GRA11
         zones: ['nova']
       - name: SBG5
+        zones: ['nova']
+      - name: UK1
+        zones: ['nova']
+      - name: DE1
         zones: ['nova']
       - name: WAW1
         zones: ['nova']
@@ -120,7 +122,9 @@ providers:
         zones: ['nova']
     instance_types: ['d2-2', 'd2-4', 'd2-8', 'b2-15']
     bucket_types: ['public-read','private']
-    bucket_dns: perf.cloud.ovh.net
+    bucket_available_regions: ['BHS5','GRA11','SBG5']
+    registry_types: []
+    registry_available_regions: ['GRA11']
     bucket_initial_dns: storage
     instance_configs:
       - region: SBG5
