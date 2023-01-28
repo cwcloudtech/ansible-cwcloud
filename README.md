@@ -10,3 +10,9 @@ You'll also need to deploy those dependancies to make it work:
 * Redis
 
 More informations here if you need support: https://doc.comwork.cloud
+
+## Git repositories
+
+* Main repo: https://gitlab.comwork.io/oss/ansible-iac/cloud.git
+* Github mirror: https://github.com/idrissneumann/ansible-cwcloud.git
+* Gitlab mirror: https://gitlab.com/ineumann/ansible-cwcloud.git
