@@ -31,7 +31,7 @@ cloud_doc_url: https://doc.cloud.comwork.io
 company_name: changeit
 cloud_pulumi_access_token: changeit
 cloud_pulumi_passphrase: changeit
-cloud_pulumi_backend_url: s3://changeit
+cloud_pulumi_backend_url: s3://cwcloud-pulumi-state?endpoint=s3.region.changeit.cloud
 
 cloud_yubico_client_id: changeit
 cloud_yubico_client_secret: changeit
