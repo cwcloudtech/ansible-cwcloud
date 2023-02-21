@@ -8,13 +8,15 @@ gitlab_public_instances:
   - https://gitlab.com
   - https://lab.frogg.it
 
-web_app_image_tag: main-ea82a19d
-api_image_tag: main-81f0204b
+web_app_image_tag: main-ba60a56d
+api_image_tag: main-5e7fcabf
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
 
 ## Environment variables
+cloud_ui_label: "CWCloud Platform"
+cloud_ui_url: "cloud.comwork.io"
 cloud_matomo_url: ""
 cloud_matomo_site_id: ""
 cloud_git_username: changeit
