@@ -19,6 +19,7 @@ cloud_ui_label: "CWCloud Platform"
 cloud_ui_url: "cloud.comwork.io"
 cloud_matomo_url: ""
 cloud_matomo_site_id: ""
+cloud_avatar_service: "https://avatars.dicebear.com"
 cloud_git_username: changeit
 cloud_git_email: changeit
 cloud_db_name: cloud
