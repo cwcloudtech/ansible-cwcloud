@@ -77,8 +77,8 @@ cloud_scw_access_key: changeit
 cloud_scw_secret_key: changeit
 cloud_price_unit: "€"
 
-cloud_seo_title: "CWCloud on premises"
-cloud_seo_description: "On premises environment of CWCloud. Go on cloud.comwork.io for further informations"
+cloud_seo_title: "CWCloud self-hosted"
+cloud_seo_description: "Self-hosted environment of CWCloud. Go on cloud.comwork.io for further informations"
 cloud_seo_keywords: "preproduction, cwcloud"
 
 # to enable if you want to change the logo

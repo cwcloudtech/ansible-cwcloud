@@ -1,6 +1,6 @@
 # Cloud
 
-Ansible role for cloud.comwork.io [deployment on premise](https://doc.cloud.comwork.io/docs/onprem).
+Ansible role for [CwCloud self-hosted deployment](https://doc.cloud.comwork.io/docs/selfhosted).
 
 You can see all the needed configurations [here](defaults/main.yml)
 
