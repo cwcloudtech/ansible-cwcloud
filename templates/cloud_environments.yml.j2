@@ -35,7 +35,13 @@ providers:
 {% if instance_config["zones"]|length > 0 %}
        zones:
 {% for zone in instance_config["zones"] %}
-         - name: {{zone["name"]}}
+          - name: {{zone["name"]}}
+            {% if "subnet" in zone and zone["subnet"]|length > 0 %}
+            subnet: {{zone["subnet"]}}
+            {% endif %}
+            {% if "sg" in zone and zone["sg"]|length > 0 %}
+            sg: {{zone["sg"]}}
+            {% endif %}
 {% if zone["instance_types"]|length > 0 %}
            instance_types:
 {% for instance_type in zone["instance_types"] %}
