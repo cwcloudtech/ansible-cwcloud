@@ -130,7 +130,7 @@ providers:
         zones: ['nova']
       - name: BHS5
         zones: ['nova']
-    instance_types: ['d2-2', 'd2-4', 'd2-8', 'b2-15']
+    instance_types: ['d2-4', 'd2-8', 'b2-15']
     bucket_types: ['public-read','private']
     bucket_available_regions: ['BHS5','GRA11','SBG5']
     registry_types: []
