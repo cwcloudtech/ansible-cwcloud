@@ -73,8 +73,8 @@ providers: []
 {% if dns_zones|length > 0 %}
 dns_zones: 
 {% for zone in dns_zones %}
- - name: {{ zone["name"] }}
-   strategy: {{ zone["strategy"] }}
+  - name: {{ zone["name"] }}
+    strategy: {{ zone["strategy"] }}
 {% endfor %}
 {% else %}
 dns_zones: []
