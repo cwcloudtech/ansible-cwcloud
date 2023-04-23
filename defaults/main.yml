@@ -9,7 +9,7 @@ gitlab_public_instances:
   - https://lab.frogg.it
 
 web_app_image_tag: main-bfa92739
-api_image_tag: main-8213d68c
+api_image_tag: main-f6945aa4
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
@@ -85,13 +85,6 @@ cloud_seo_keywords: "preproduction, cwcloud"
 # cloud_external_url: https://url_to_yourlogo/logo.png
 
 ovh_instance_types: &ovhInstancesTypes
-  - type: d2-2
-    core: 1 X86 64bit
-    ram: 2 GB
-    disk: 25 GB NVMe
-    bandwidth: 100 Mbps
-    localstorage: 0 GB
-    price_variable: PRICE_d2_2
   - type: d2-4
     core: 2 X86 64bit
     ram: 4 GB
