@@ -12,7 +12,7 @@ gitlab_public_instances:
 providers: 
 {% for provider in providers %}
   - name: {{provider["name"]}}
-    strategy: {{provider["strategy"]}}
+    driver: {{provider["driver"]}}
 {% if provider["regions"]|length > 0 %}
     regions:
 {% for region in provider["regions"] %}
@@ -27,7 +27,7 @@ providers:
     bucket_available_regions: {{provider["bucket_available_regions"]}}
     registry_types: {{provider["registry_types"]}}
     registry_available_regions: {{provider["registry_available_regions"]}}
-    strategy: {{provider["strategy"]}}
+    driver: {{provider["driver"]}}
 {% if provider["instance_configs"]|length > 0 %}
     instance_configs:
 {% for instance_config in provider["instance_configs"] %}
@@ -75,7 +75,7 @@ providers: []
 dns_zones: 
 {% for zone in dns_zones %}
   - name: {{ zone["name"] }}
-    strategy: {{ zone["strategy"] }}
+    driver: {{ zone["driver"] }}
 {% endfor %}
 {% else %}
 dns_zones: []

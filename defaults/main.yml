@@ -8,8 +8,8 @@ gitlab_public_instances:
   - https://gitlab.com
   - https://lab.frogg.it
 
-web_app_image_tag: main-26e450d4
-api_image_tag: main-431a4afa
+web_app_image_tag: main-1cc8e755
+api_image_tag: main-e6ff4287
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
@@ -109,7 +109,7 @@ ovh_instance_types: &ovhInstancesTypes
 
 providers:
   - name: ovh
-    strategy: OvhStrategy
+    driver: OvhDriver
     regions:
       - name: GRA11
         zones: ['nova']
