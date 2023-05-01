@@ -8,6 +8,9 @@ gitlab_public_instances:
 {% endfor %}
 {% endif %}
 
+adapters:
+  emails: {{ cloud_email_adapter }}
+
 {% if providers|length > 0 %}
 providers: 
 {% for provider in providers %}
