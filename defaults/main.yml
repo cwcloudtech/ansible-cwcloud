@@ -8,8 +8,8 @@ gitlab_public_instances:
   - https://gitlab.com
   - https://lab.frogg.it
 
-web_app_image_tag: main-f889e635
-api_image_tag: main-019fb994
+web_app_image_tag: main-9f51be04
+api_image_tag: main-06975e3a
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
@@ -59,6 +59,7 @@ cloud_access_key_secret: changeit
 cloud_s3_default_region: sbg
 cloud_region: fr-par
 cloud_email_adapter: log
+cloud_payment_adapter: log
 cloud_email_from: cloud@yourdomain.com # changeit
 cloud_jwt_key: changeit # base64
 cloud_token_ttl: 7200

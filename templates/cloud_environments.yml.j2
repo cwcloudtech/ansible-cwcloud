@@ -10,6 +10,7 @@ gitlab_public_instances:
 
 adapters:
   emails: {{ cloud_email_adapter }}
+  payments: {{ cloud_payment_adapter }}
 
 {% if providers|length > 0 %}
 providers: 
