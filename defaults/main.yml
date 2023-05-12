@@ -9,7 +9,7 @@ gitlab_public_instances:
   - https://lab.frogg.it
 
 web_app_image_tag: main-9f51be04
-api_image_tag: main-e2a2bdb3
+api_image_tag: main-f63698bf
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
@@ -29,6 +29,7 @@ cloud_db_port: 5432
 cloud_db_password: changeit
 cloud_disable_payment_feature: true
 cloud_disable_stripe_feature: true
+cloud_disable_payment_button: true
 cloud_redis_host: comwork_cloud_cache
 cloud_api_url: https://cloud-api.changeit.com # changeit
 cloud_api_version: v1
