@@ -9,7 +9,7 @@ gitlab_public_instances:
   - https://lab.frogg.it
 
 web_app_image_tag: main-1667229f
-api_image_tag: main-41d30ed5
+api_image_tag: main-2b3fa6e4
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
