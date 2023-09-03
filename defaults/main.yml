@@ -30,7 +30,7 @@ cloud_db_password: changeit
 cloud_disable_payment_feature: true
 cloud_disable_stripe_feature: true
 cloud_disable_payment_button: true
-cloud_redis_host: comwork_cloud_cache
+cloud_redis_url: "comwork_cloud_cache:6379"
 cloud_api_url: https://cloud-api.changeit.com # changeit
 cloud_api_version: v1
 cloud_doc_url: https://doc.cloud.comwork.io
