@@ -84,6 +84,12 @@ cloud_seo_title: "CWCloud self-hosted"
 cloud_seo_description: "Self-hosted environment of CWCloud. Go on cloud.comwork.io for further informations"
 cloud_seo_keywords: "preproduction, cwcloud"
 
+# FaaS default settings
+cloud_pubsub_adapter: redis
+cloud_faas_channel_consumer: faas
+cloud_faas_channel_triggers: faastriggers
+cloud_faas_sleep_time: 3600
+
 # to enable if you want to change the logo
 # cloud_external_url: https://url_to_yourlogo/logo.png
 
