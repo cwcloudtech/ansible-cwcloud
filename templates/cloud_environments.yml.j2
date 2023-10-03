@@ -9,6 +9,7 @@ gitlab_public_instances:
 {% endif %}
 
 adapters:
+  cache: redis
   emails: {{ cloud_email_adapter }}
   payments: {{ cloud_payment_adapter }}
   pubsub: {{ cloud_pubsub_adapter }}
