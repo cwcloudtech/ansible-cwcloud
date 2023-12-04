@@ -42,11 +42,7 @@ cloud_pulumi_backend_url: s3://cwcloud-pulumi-state?endpoint=s3.region.changeit.
 cloud_yubico_client_id: changeit
 cloud_yubico_client_secret: changeit
 
-cloud_slack_token: changeit
 cloud_slack_trigger: "off"
-cloud_slack_channel: "#cloud"
-cloud_slack_emoji: ":comworkcloud:"
-cloud_slack_username: "comwork-cloud"
 
 cloud_dynamic_repo_id: changeit
 cloud_gitlab_url: https://gitlab.yourdomain.com # changeit
