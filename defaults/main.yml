@@ -42,8 +42,6 @@ cloud_pulumi_backend_url: s3://cwcloud-pulumi-state?endpoint=s3.region.changeit.
 cloud_yubico_client_id: changeit
 cloud_yubico_client_secret: changeit
 
-cloud_slack_trigger: "off"
-
 cloud_dynamic_repo_id: changeit
 cloud_gitlab_url: https://gitlab.yourdomain.com # changeit
 cloud_playbook_repo_url: https://gitlab.yourdomain.com/infrastructure/infra-playbook.git # changeit
