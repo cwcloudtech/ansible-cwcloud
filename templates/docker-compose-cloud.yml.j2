@@ -23,7 +23,43 @@ services:
       - .env.api
     ports:
       - "5000:5000"
-  
+
+{% if cloud_faas_enabled is defined and cloud_faas_enabled %}
+  comwork_cloud_consumer:
+    restart: always
+
+{% if consumer_image_tag is defined %}
+    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_consumer:{{ consumer_image_tag }}
+{% else %}
+    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_consumer:{{ api_image_tag }}
+{% endif %}
+
+    container_name: comwork_cloud_consumer
+    volumes:
+      - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
+    env_file:
+      - .env.api
+    networks:
+      - cloud_api
+
+  comwork_cloud_scheduler:
+    restart: always
+
+{% if scheduler_image_tag is defined %}
+    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_scheduler:{{ scheduler_image_tag }}
+{% else %}
+    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_scheduler:{{ api_image_tag }}
+{% endif %}
+
+    container_name: comwork_cloud_scheduler
+    volumes:
+      - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
+    env_file:
+      - .env.api
+    networks:
+      - cloud_api
+{% endif %}
+
   comwork_cloud_cache:
     image: redis:6.2.6
     restart: always
@@ -38,5 +74,3 @@ networks:
     driver: bridge
   cloud_ui:
     driver: bridge
-
-
