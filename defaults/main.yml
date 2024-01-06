@@ -80,7 +80,7 @@ cloud_seo_keywords: "preproduction, cwcloud"
 
 # FaaS default settings
 cloud_faas_enabled: false
-cloud_pubsub_adapter: redis
+cloud_pubsub_adapter: redisstream
 cloud_faas_channel_consumer: faas
 cloud_faas_channel_triggers: faastriggers
 cloud_faas_sleep_time: 3600
