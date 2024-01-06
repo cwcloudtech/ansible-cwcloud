@@ -85,7 +85,7 @@ cloud_faas_channel_consumer: faas
 cloud_faas_channel_triggers: faastriggers
 cloud_faas_sleep_time: 3600
 cloud_faas_startup_time: 30
-cloud_faas_consumer_replicas: 2
+cloud_faas_consumer_replicas: 1
 
 # to enable if you want to change the logo
 # cloud_external_url: https://url_to_yourlogo/logo.png
