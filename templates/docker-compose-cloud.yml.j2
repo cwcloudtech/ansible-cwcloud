@@ -34,13 +34,15 @@ services:
     image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_consumer:{{ api_image_tag }}
 {% endif %}
 
-    container_name: comwork_cloud_consumer
     volumes:
       - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
     env_file:
       - .env.api
     networks:
       - cloud_api
+    deploy:
+      mode: replicated
+      replicas: {{ cloud_faas_consumer_replicas }}
 
   comwork_cloud_scheduler:
     restart: always
