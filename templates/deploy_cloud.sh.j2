@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+{% if container_registry.password is defined and container_registry.password and container_registry.login is defined and container_registry.login %}
 echo "{{ container_registry.password }}" | docker login -u "{{ container_registry.login }}" "{{ container_registry.url }}" --password-stdin
+{% endif %}
 
 {% if cloud_force_recreate is defined and cloud_force_recreate %}
 RECREATE_OPT="--force-recreate"

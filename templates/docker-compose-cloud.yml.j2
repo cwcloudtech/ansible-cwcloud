@@ -3,7 +3,13 @@ services:
   comwork_cloud_ui:
     restart: always
     container_name: comwork_cloud_ui
-    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_ui:{{ web_app_image_tag }}
+
+{% if web_app_image_tag is defined %}
+    image: {{ container_registry.url }}/cwloud-ui:{{ web_app_image_tag }}
+{% else %}
+    image: {{ container_registry.url }}/cwloud-ui:{{ api_image_tag }}
+{% endif %}
+
     env_file: 
       - .env.webapp
     networks:
@@ -14,7 +20,7 @@ services:
   comwork_cloud_api:
     restart: always
     container_name: comwork_cloud_api
-    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_api:{{ api_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-api:{{ api_image_tag }}
     volumes:
       - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
     networks:
@@ -29,9 +35,9 @@ services:
     restart: always
 
 {% if consumer_image_tag is defined %}
-    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_consumer:{{ consumer_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-consumer:{{ consumer_image_tag }}
 {% else %}
-    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_consumer:{{ api_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-consumer:{{ api_image_tag }}
 {% endif %}
 
     volumes:
@@ -48,9 +54,9 @@ services:
     restart: always
 
 {% if scheduler_image_tag is defined %}
-    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_scheduler:{{ scheduler_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-scheduler:{{ scheduler_image_tag }}
 {% else %}
-    image: rg.fr-par.scw.cloud/comworkio/comwork_cloud_scheduler:{{ api_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-scheduler:{{ api_image_tag }}
 {% endif %}
 
     container_name: comwork_cloud_scheduler
