@@ -5,9 +5,9 @@ services:
     container_name: comwork_cloud_ui
 
 {% if web_app_image_tag is defined %}
-    image: {{ container_registry.url }}/cwloud-ui:{{ web_app_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-ui:{{ web_app_image_tag }}
 {% else %}
-    image: {{ container_registry.url }}/cwloud-ui:{{ api_image_tag }}
+    image: {{ container_registry.url }}/cwcloud-ui:{{ api_image_tag }}
 {% endif %}
 
     env_file: 
