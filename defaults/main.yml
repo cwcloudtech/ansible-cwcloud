@@ -160,6 +160,7 @@ providers:
             instance_types: *ovhInstancesTypes
 
 dns_zones: []
+firewall_tags: []
 
 images:
   - UK1-nova:  bbc039ad-1b1c-490c-9aef-a13ce802db5f
