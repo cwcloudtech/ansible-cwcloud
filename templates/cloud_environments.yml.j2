@@ -82,6 +82,9 @@ dns_zones:
 {% for zone in dns_zones %}
   - name: {{ zone["name"] }}
     driver: {{ zone["driver"] }}
+    {% if "zone_id" in zone and zone["zone_id"]|length > 0 %}
+    zone_id: {{ zone["zone_id"] }}
+    {% endif %}
 {% endfor %}
 {% else %}
 dns_zones: []
