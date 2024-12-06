@@ -6,7 +6,7 @@ gitlab_public_instances:
   - https://gitlab.com
   - https://lab.frogg.it
 
-web_app_image_tag: ce-3.9.16
+web_app_image_tag: ce-3.9.17
 api_image_tag: ce-3.13.12
 
 cloud_force_recreate: true
