@@ -1,10 +1,11 @@
+---
 galaxy_info:
-  role_name: comwork-cloud
-  author: Idriss Neumann, Amir Ghedira, Abdelkader Brahem
-  description: Deploy and configure comwork cloud
+  role_name: cwcloud
+  author: Idriss Neumann
+  description: Deploy and configure CWCloud
   company: Comwork
-
-  min_ansible_version: 2.2
-
+  license: MIT
+  min_ansible_version: "2.2"
   platforms:
-    - name: RaspberrypiOS
+    - name: EL
+    - name: Fedora
