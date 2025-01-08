@@ -27,6 +27,9 @@ services:
       - cloud_api
     env_file: 
       - .env.api
+{% if cloud_price_script_url is defined and cloud_price_script_url %}
+      - .env.price
+{% endif %}
     ports:
       - "5000:5000"
 

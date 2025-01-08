@@ -33,9 +33,23 @@
     - { template: .env.webapp , path: "{{ node_home }}" , mode: '0644' }
     - { template: migrate_cloud.sh , path: "{{ node_home }}" , mode: '0755' }
 
+- name: Generate price script
+  become: true
+  template:
+    src: "{{ item.template }}.j2"
+    dest: "{{ item.path }}/{{ item.template }}"
+    mode: "{{ item.mode }}"
+  with_items:
+    - { template: cloud_generate_price_file.sh , path: "{{ node_home }}" , mode: '0777' }
+  when: cloud_price_script_url is defined and cloud_price_script_url
+
 - name: Data migration
   become: yes
   command: "bash {{ node_home }}/migrate_cloud.sh > {{ node_home }}/migrate_cloud.log 2>&1"
+
+- name: Generate price env file
+  become: true
+  command: "bash {{ node_home }}/cloud_generate_price_file.sh"
 
 - name: Deploy comwork cloud
   become: yes
