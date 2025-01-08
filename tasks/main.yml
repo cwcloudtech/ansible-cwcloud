@@ -44,7 +44,7 @@
   when: cloud_price_script_url is defined and cloud_price_script_url
 
 - name: Data migration
-  become: yes
+  become: true
   command: "bash {{ node_home }}/migrate_cloud.sh > {{ node_home }}/migrate_cloud.log 2>&1"
 
 - name: Generate price env file
@@ -52,5 +52,5 @@
   command: "bash {{ node_home }}/cloud_generate_price_file.sh"
 
 - name: Deploy comwork cloud
-  become: yes
+  become: true
   command: "bash {{ node_home }}/deploy_cloud.sh"
