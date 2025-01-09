@@ -50,6 +50,7 @@
 - name: Generate price env file
   become: true
   command: "bash {{ node_home }}/cloud_generate_price_file.sh"
+  when: cloud_price_script_url is defined and cloud_price_script_url
 
 - name: Deploy comwork cloud
   become: true
