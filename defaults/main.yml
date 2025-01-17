@@ -11,6 +11,7 @@ api_image_tag: ce-3.15.28
 
 cloud_force_recreate: true
 cloud_force_rebuild: true
+cloud_clean_docker: true
 
 ## Environment variables
 cloud_log_level: INFO

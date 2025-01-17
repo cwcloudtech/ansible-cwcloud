@@ -16,6 +16,10 @@ REBUILD_OPT="--build"
 REBUILD_OPT=""
 {% endif %}
 
+{% if cloud_clean_docker is defined and cloud_clean_docker %}
+docker system prune -af
+{% endif %}
+
 {% if centos_version is defined and (centos_version == "9" or centos_version == 9) %}
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose -f {{ node_home }}/docker-compose-cloud.yml up -d ${REBUILD_OPT} ${RECREATE_OPT}
 {% else %}
