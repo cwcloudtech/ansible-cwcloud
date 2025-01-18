@@ -1,6 +1,6 @@
 
 ---
-- name: Create migration dir
+- name: Create missing dirs
   become: true
   ansible.builtin.file:
     path: "{{ item.path }}"
@@ -9,6 +9,7 @@
     recurse: "{{ item.recurse }}"
   with_items:
     - { path: "{{ node_home }}/migrations", recurse: no, mode: '0755'}
+    - { path: "{{ node_home }}/ai", recurse: no, mode: '0755'}
 
 - name: Create comwork-cloud migrations files
   become: true

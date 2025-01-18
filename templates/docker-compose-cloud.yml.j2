@@ -22,7 +22,8 @@ services:
     container_name: comwork_cloud_api
     image: {{ container_registry.url }}/cwcloud-api:{{ api_image_tag }}
     volumes:
-      - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
+      - {{ node_home }}/cloud_environments.yml:/app/cloud_environments.yml:ro
+      - {{ node_home }}/ai:{{ cwai_transformers_cache_dir }}:z
     networks:
       - cloud_api
     env_file: 
@@ -44,7 +45,7 @@ services:
 {% endif %}
 
     volumes:
-      - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
+      - {{ node_home }}/cloud_environments.yml:/app/cloud_environments.yml:ro
     env_file:
       - .env.api
     networks:
@@ -64,7 +65,7 @@ services:
 
     container_name: comwork_cloud_scheduler
     volumes:
-      - /{{node_home}}/cloud_environments.yml:/app/cloud_environments.yml:ro
+      - {{ node_home }}/cloud_environments.yml:/app/cloud_environments.yml:ro
     env_file:
       - .env.api
     networks:
