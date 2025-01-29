@@ -9,7 +9,7 @@ You'll also need to deploy those dependancies to make it work:
 * PostgreSQL
 * Redis
 
-More informations here if you need support: https://doc.comwork.cloud
+More informations here if you need support: https://www.cwcloud.tech/docs
 
 ## Git repositories
 
