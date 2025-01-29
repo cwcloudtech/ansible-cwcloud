@@ -30,7 +30,7 @@ cloud_disable_payment_button: true
 cloud_redis_url: "comwork_cloud_cache:6379"
 cloud_api_url: https://cloud-api.changeit.com # changeit
 cloud_api_version: v1
-cloud_doc_url: https://doc.cloud.comwork.io
+cloud_doc_url: "https://www.cwcloud.tech/docs"
 company_name: changeit
 cloud_pulumi_access_token: changeit
 cloud_pulumi_passphrase: changeit
