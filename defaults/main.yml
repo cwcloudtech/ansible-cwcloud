@@ -86,7 +86,6 @@ cloud_faas_consumer_replicas: 1
 
 # AI settings
 cwai_enable: false
-cwai_transformers_cache_dir: /root/.cache/huggingface/hub
 
 # to enable if you want to change the logo
 # cloud_external_url: https://url_to_yourlogo/logo.png
