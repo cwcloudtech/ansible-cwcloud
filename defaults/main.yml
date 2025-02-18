@@ -16,6 +16,7 @@ cloud_clean_docker: true
 ## Environment variables
 cloud_log_level: INFO
 cloud_log_format: json
+cloud_api_workers: 4
 cloud_ui_label: "CWCloud Platform"
 cloud_ui_url: "cloud.comwork.io"
 cloud_git_email: cloud@changeit.com
